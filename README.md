@@ -45,7 +45,7 @@ Bash
 conda create -n supplychain_env python=3.8 -y
 conda activate supplychain_env
 Step 3: Install Required Libraries
-(You will need to create a requirements.txt file for this to work. For now, just run the manual install.)
+(If you don't have a requirements.txt file, run the manual install.)
 
 Bash
 
@@ -53,9 +53,9 @@ pip install streamlit pandas yfinance transformers torch scikit-learn
 Step 4: Add Your Secret API Key 🤫
 You must create this file. It is ignored by Git so your secrets are safe.
 
-Create a new file in the main folder named config.py.
+1. Create a new file in the main folder named config.py.
 
-Inside this file, add your News API key:
+2. Inside this file, add your News API key:
 
 Python
 
@@ -64,6 +64,3 @@ Step 5: Run the Streamlit App! 🚀
 Bash
 
 streamlit run app.py
-```bash
-git clone [https://github.com/Diyapratap22/supply-chain-forecaster.git](https://github.com/Diyapratap22/supply-chain-forecaster.git)
-cd supply-chain-forecaster
