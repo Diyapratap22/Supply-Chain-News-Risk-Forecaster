@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supply Chain Risk Forecaster</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; margin: 0; background: #f9f9f9; }
+        .container { max-width: 1000px; margin: 20px auto; background: white; padding: 20px 30px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+        h1 { color: #222; border-bottom: 2px solid #eee; padding-bottom: 10px; }
+        .article { border-bottom: 1px solid #eee; padding: 20px 0; }
+        .article:last-child { border-bottom: none; }
+        .article h2 { margin: 0 0 8px 0; }
+        .article h2 a { text-decoration: none; color: #0056b3; font-size: 1.25em; }
+        .article h2 a:hover { text-decoration: underline; }
+        .meta { display: flex; align-items: center; margin-bottom: 10px; }
+        .score { 
+            font-size: 1.5em; 
+            font-weight: bold; 
+            color: #d9534f; /* Red for high risk */
+            margin-right: 15px; 
+            min-width: 80px; 
+            text-align: center;
+            background: #fdf7f7;
+            padding: 5px 10px;
+            border-radius: 6px;
+            border: 1px solid #f0c9c8;
+        }
+        .source { color: #555; font-size: 0.9em; }
+        .description { color: #333; margin: 10px 0; line-height: 1.5; }
+        .entities { margin-top: 12px; }
+        .entity {
+            display: inline-block;
+            background: #e7f1ff; 
+            color: #0056b3; 
+            padding: 4px 10px; 
+            border-radius: 12px; 
+            font-size: 0.85em; 
+            margin-right: 5px;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Supply Chain Risk Forecaster 📈</h1>
+        
+        {% for article in articles %}
+            <div class="article">
+                <div class="meta">
+                    <span class="score">Risk: {{ article.risk_score }}</span>
+                    <h2><a href="{{ article.url }}" target="_blank">{{ article.title }}</a></h2>
+                </div>
+                <p class="description">{{ article.description }}</p>
+                <div class="meta">
+                    <span class="source"><strong>Source:</strong> {{ article.source }} | <strong>Published:</strong> {{ article.publishedAt }}</span>
+                </div>
+               <div class="entities">
+                    {% for entity in article.entities %}
+                        <span class="entity">{{ entity }}</span>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endfor %}
+        
+        {% if not articles %}
+            <p>No high-risk articles found. The supply chain looks clear!</p>
+        {% endif %}
+    </div>
+</body>
+</html>

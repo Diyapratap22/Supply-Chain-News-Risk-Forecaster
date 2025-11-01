@@ -1,5 +1,9 @@
-pandas
+requests
+spacy
+python-dotenv
 numpy
-seaborn
+pandas
+flask
+streamlit
 -e .
 
